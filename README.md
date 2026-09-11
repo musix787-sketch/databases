@@ -1,4 +1,4 @@
-# dbms docs
+# dbms
 
 Database fundamentals guide, built with Sphinx + the Shibuya theme.
 
