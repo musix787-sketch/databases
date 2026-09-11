@@ -58,9 +58,11 @@ chain of events kicks off before anything hits disk:
    tells your application "done", and any locks it was holding get
    released for the next transaction.
 
-**Note:** Almost every "the database is slow" complaint traces back to
-step two, a plan that scans a million rows because the right index
-doesn't exist, or exists but isn't being used.
+.. note::
+
+   Almost every "the database is slow" complaint traces back to step
+   two, a plan that scans a million rows because the right index doesn't
+   exist, or exists but isn't being used.
 
 .. _files-vs-dbms:
 
