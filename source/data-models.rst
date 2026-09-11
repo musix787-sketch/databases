@@ -51,10 +51,8 @@ something relational first, it's a boring, well-understood choice, and
 boring is usually what you want in the part of your stack holding your
 users' money.
 
-.. warning::
-
-   "We're using MongoDB because it scales better" is one of the more
-   common pieces of received wisdom in this space, and it's usually
-   wrong, Postgres scales to a genuinely enormous size for the vast
-   majority of applications that will ever be built. Pick the model that
-   fits your data, not the one you heard was faster.
+**Warning:** "We're using MongoDB because it scales better" is one of
+the more common pieces of received wisdom in this space, and it's
+usually wrong, Postgres scales to a genuinely enormous size for the vast
+majority of applications that will ever be built. Pick the model that
+fits your data, not the one you heard was faster.
