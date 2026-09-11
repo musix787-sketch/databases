@@ -1,6 +1,6 @@
 project = "dbms docs"
 copyright = "2026"
-author = "you"
+author = "cyrodev"
 
 extensions = [
     "sphinx_design",
