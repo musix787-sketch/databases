@@ -41,9 +41,3 @@ from awkward to effectively impossible. Most teams should exhaust
 vertical scaling (a bigger machine) and read replicas before reaching
 for sharding, it solves a real problem, but it's rarely the first
 problem worth solving.
-
-----
-
-.. seealso::
-
-   Previous: :doc:`under-the-hood` · Next: :doc:`reference`
