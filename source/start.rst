@@ -58,11 +58,9 @@ chain of events kicks off before anything hits disk:
    tells your application "done", and any locks it was holding get
    released for the next transaction.
 
-.. note::
-
-   Almost every "the database is slow" complaint traces back to step
-   two, a plan that scans a million rows because the right index doesn't
-   exist, or exists but isn't being used.
+**Note:** Almost every "the database is slow" complaint traces back to
+step two, a plan that scans a million rows because the right index
+doesn't exist, or exists but isn't being used.
 
 .. _files-vs-dbms:
 
@@ -101,3 +99,7 @@ None of this means files are wrong for small jobs, a config file doesn't
 need ACID guarantees. But the moment two people, two processes, or a
 meaningful amount of data enter the picture, the DBMS starts paying for
 itself fast.
+
+----
+
+`Next: Data models <data-models.rst>`_
