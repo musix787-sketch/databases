@@ -101,5 +101,3 @@ meaningful amount of data enter the picture, the DBMS starts paying for
 itself fast.
 
 ----
-
-`Next: Data models <data-models.rst>`_
