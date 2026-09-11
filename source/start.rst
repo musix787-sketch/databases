@@ -18,11 +18,11 @@ it, and what happens if two people try to change the same thing at once.
 The word gets used loosely, so it helps to split it into two things people
 usually mean at the same time without realizing it:
 
-- **The database** — The actual data sitting on disk, the rows, the
+- **The database** - The actual data sitting on disk, the rows, the
   files, the bytes. On its own it's inert. It can't answer a question or
   stop you from typing your age as "banana." *Think: the filing cabinet
   itself.*
-- **The DBMS** — The software wrapped around that data, Postgres,
+- **The DBMS** - The software wrapped around that data, Postgres,
   MongoDB, whatever, that enforces rules, answers queries, and keeps
   things intact when the power goes out mid-write. *Think: the
   librarian, not the shelves.*
@@ -41,20 +41,20 @@ A DBMS earns its keep by doing a handful of unglamorous jobs, constantly,
 without you noticing. When you write ``INSERT INTO orders ...``, a small
 chain of events kicks off before anything hits disk:
 
-#. **Parse the request** — Your SQL (or query language of choice) gets
+#. **Parse the request** - Your SQL (or query language of choice) gets
    checked for syntax errors and turned into something the engine can
    reason about, an abstract syntax tree, not a string.
-#. **Plan the cheapest way to do it** — The query planner looks at
+#. **Plan the cheapest way to do it** - The query planner looks at
    available indexes, table sizes, and statistics, then picks an
    execution plan. This is the step where a missing index turns a 2ms
    query into a 4-second one.
-#. **Check the rules** — Constraints, foreign keys, uniqueness, anything
+#. **Check the rules** - Constraints, foreign keys, uniqueness, anything
    you've told the database to enforce gets checked here. Break one and
    the whole operation is rejected.
-#. **Write it down, safely** — The change is written to a write-ahead log
+#. **Write it down, safely** - The change is written to a write-ahead log
    before it touches the actual table files, so a crash mid-write doesn't
    leave you with half a row.
-#. **Confirm and move on** — Once durability is guaranteed, the DBMS
+#. **Confirm and move on** - Once durability is guaranteed, the DBMS
    tells your application "done", and any locks it was holding get
    released for the next transaction.
 
