@@ -12,32 +12,18 @@ ACID gets recited like a magic word in interviews, but each letter is
 answering a specific, concrete fear about what could go wrong. It helps
 to think of them as promises, not features:
 
-.. grid:: 1 2 2 4
-   :gutter: 3
-
-   .. grid-item-card:: A — Atomicity
-
-      "Deduct from account A, add to account B" happens as one
-      indivisible unit. If the second half fails, the first half gets
-      undone, you never end up with money vanishing between accounts.
-
-   .. grid-item-card:: C — Consistency
-
-      Any transaction takes the database from one valid state to
-      another. If you've said balances can't go negative, no
-      transaction, however written, is allowed to break that.
-
-   .. grid-item-card:: I — Isolation
-
-      Two transactions running at the same moment can't see each other's
-      unfinished work. What you read looks like it happened before or
-      after the other one, never halfway through.
-
-   .. grid-item-card:: D — Durability
-
-      Once the database says "committed," that data survives a crash a
-      millisecond later. It's on disk (or logged somewhere durable), not
-      sitting hopefully in RAM.
+- **A: Atomicity** - "Deduct from account A, add to account B" happens
+  as one indivisible unit. If the second half fails, the first half gets
+  undone, you never end up with money vanishing between accounts.
+- **C: Consistency** - Any transaction takes the database from one
+  valid state to another. If you've said balances can't go negative, no
+  transaction, however written, is allowed to break that.
+- **I: Isolation** - Two transactions running at the same moment can't
+  see each other's unfinished work. What you read looks like it happened
+  before or after the other one, never halfway through.
+- **D: Durability** - Once the database says "committed," that data
+  survives a crash a millisecond later. It's on disk (or logged
+  somewhere durable), not sitting hopefully in RAM.
 
 Most NoSQL systems relax one or more of these on purpose, usually
 isolation or consistency, in exchange for speed or the ability to keep
@@ -55,25 +41,22 @@ If a customer's address changes, you want to update it once, not go
 hunting through every order row that happened to copy it. The formal
 rules build on each other:
 
-#. **First normal form, one value per cell** — No stuffing a
+#. **First normal form, one value per cell** - No stuffing a
    comma-separated list of phone numbers into a single column. If
    something can repeat, it gets its own table.
-#. **Second normal form, depend on the whole key** — If a table's key is
+#. **Second normal form, depend on the whole key** - If a table's key is
    ``(order_id, product_id)``, a column like "customer_name" that only
    depends on ``order_id`` doesn't belong there, it belongs on the
    orders table.
-#. **Third normal form, no chains** — If "zip_code" determines "city",
+#. **Third normal form, no chains** - If "zip_code" determines "city",
    don't store both directly on the customer table where they can drift
    apart. Store ``zip_code``, and look up the city from it.
 
-.. note::
-
-   Fully normalized schemas are elegant and occasionally slow, because
-   answering a question now means joining five tables together.
-   Denormalizing on purpose, duplicating a bit of data to skip a join,
-   is a legitimate, common trade-off, not a mistake, as long as you're
-   honest with yourself about who's responsible for keeping the copies
-   in sync.
+**Note:** Fully normalized schemas are elegant and occasionally slow,
+because answering a question now means joining five tables together.
+Denormalizing on purpose, duplicating a bit of data to skip a join, is a
+legitimate, common trade-off, not a mistake, as long as you're honest
+with yourself about who's responsible for keeping the copies in sync.
 
 .. _indexing:
 
@@ -138,22 +121,14 @@ The harder problem is what happens when two transactions touch
 overlapping data at the same time. Databases mostly solve this one of
 two ways:
 
-.. grid:: 1 2 2 2
-   :gutter: 3
-
-   .. grid-item-card:: Locking
-
-      A transaction takes a lock on a row before touching it, and anyone
-      else who wants it has to wait in line. Simple to reason about, but
-      a slow transaction holding a lock backs everyone else up behind
-      it.
-
-   .. grid-item-card:: MVCC
-
-      Multi-version concurrency control: instead of locking, the
-      database keeps multiple snapshots of a row around, so readers
-      never block writers. This is how Postgres avoids most locking
-      headaches by default.
+- **Locking** - A transaction takes a lock on a row before touching it,
+  and anyone else who wants it has to wait in line. Simple to reason
+  about, but a slow transaction holding a lock backs everyone else up
+  behind it.
+- **MVCC** - Multi-version concurrency control: instead of locking, the
+  database keeps multiple snapshots of a row around, so readers never
+  block writers. This is how Postgres avoids most locking headaches by
+  default.
 
 .. _cap:
 
@@ -170,15 +145,7 @@ Partition tolerance, surviving the network split in the first place,
 isn't really optional for a distributed system, so in practice this is a
 "C or A" choice, not a three-way pick.
 
-.. note::
-
-   This only matters during an actual network partition, which for most
-   teams is a rare event. Don't let CAP talk you out of a relational
-   database for a normal-sized app that's never going to run across
-   five data centers.
-
-----
-
-.. seealso::
-
-   Previous: :doc:`data-models` · Next: :doc:`at-scale`
+**Note:** This only matters during an actual network partition, which
+for most teams is a rare event. Don't let CAP talk you out of a
+relational database for a normal-sized app that's never going to run
+across five data centers.
