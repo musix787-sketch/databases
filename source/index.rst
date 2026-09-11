@@ -1,5 +1,4 @@
 # Databases, from the ground up
-
 This is the guide I wish someone had handed me before my first "design the
 schema" interview question. It goes from "what even is a database" to why
 your production Postgres instance falls over at 3am, and it tries not to
