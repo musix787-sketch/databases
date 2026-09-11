@@ -452,3 +452,46 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 });
+
+(function () {
+  var wrappers = Array.prototype.slice.call(
+    document.querySelectorAll(".copy-page-wrapper")
+  );
+  if (!wrappers.length) return;
+
+  wrappers.forEach(function (wrapper) {
+
+    wrapper._cpOrigParent = wrapper.parentNode;
+    wrapper._cpOrigNext = wrapper.nextElementSibling;
+  });
+
+  var mql = window.matchMedia("(max-width: 63.9375rem)");
+
+  function place() {
+    wrappers.forEach(function (wrapper) {
+      var article = wrapper._cpOrigNext;
+      if (!article) return;
+      var section = article.querySelector("section");
+      var h1 = section && section.querySelector("h1");
+      var desc = h1 && h1.nextElementSibling;
+      var canGoBelow = desc && desc.tagName === "P";
+
+      if (mql.matches && canGoBelow) {
+        if (wrapper.previousElementSibling !== desc) {
+          desc.insertAdjacentElement("afterend", wrapper);
+          wrapper.classList.add("copy-page-wrapper--below-header");
+        }
+      } else if (wrapper.nextElementSibling !== article) {
+        wrapper._cpOrigParent.insertBefore(wrapper, article);
+        wrapper.classList.remove("copy-page-wrapper--below-header");
+      }
+    });
+  }
+
+  place();
+  if (mql.addEventListener) {
+    mql.addEventListener("change", place);
+  } else if (mql.addListener) {
+    mql.addListener(place);
+  }
+})();

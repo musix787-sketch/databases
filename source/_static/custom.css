@@ -372,6 +372,12 @@ html:not(.js-lside-ready) .sy-main {
   }
 }
 
+.copy-page-wrapper--below-header {
+  padding-bottom: 0;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
 .globaltoc > ul li.toctree-l1 {
   margin-top: 0.35rem;
 }
@@ -653,7 +659,8 @@ html.dark {
 .yue .table-wrapper {
   border: 1px solid var(--sy-c-border);
   background: var(--gray-a2);
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin: 1.5rem 0;
 }
 .yue table.docutils {
@@ -1014,21 +1021,21 @@ mark.custom-text-fragment-highlight {
 }
 .search-empty-hint {
   position: absolute;
-  top: calc(100% + 0.4rem);
+  top: calc(100% + 0.35rem);
   left: 0;
   right: 0;
   z-index: 30;
   display: flex;
   align-items: flex-start;
-  gap: 0.4rem;
-  background: var(--red-a3, rgba(220, 53, 69, 0.12));
+  gap: 0.35rem;
+  background: transparent;
   color: var(--red-a11, #dc3545);
-  border: 1px solid var(--red-a6, rgba(220, 53, 69, 0.35));
-  border-radius: 8px;
-  padding: 0.4rem 0.65rem;
+  border: none;
+  border-radius: 0;
+  padding: 0;
   font-size: 0.78rem;
   font-weight: 500;
-  line-height: 1.3;
+  line-height: 1.35;
   pointer-events: none;
   animation: search-hint-in 0.15s ease;
 }
@@ -1036,21 +1043,8 @@ mark.custom-text-fragment-highlight {
   flex: none;
   width: 0.95rem;
   height: 0.95rem;
-  margin-top: 0.1em;
-  color: var(--red-a11, #dc3545);
-}
-
-form.searchform .search-empty-hint {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 0;
-  top: calc(100% + 0.35rem);
-  gap: 0.35rem;
-  line-height: 1.35;
-}
-form.searchform .search-empty-hint-icon {
   margin-top: 0.15em;
+  color: var(--red-a11, #dc3545);
 }
 @keyframes search-hint-in {
   from { opacity: 0; transform: translateY(-3px); }
@@ -1073,3 +1067,70 @@ form.searchform .search-empty-hint-icon {
 .search-skeleton-card .skeleton-line:nth-child(1) { width: 45%; height: 1.1em; }
 .search-skeleton-card .skeleton-line:nth-child(2) { width: 92%; }
 .search-skeleton-card .skeleton-line:nth-child(3) { width: 78%; }
+
+@media (max-width: 767px) {
+
+  .js-lside-toggle,
+  .js-lside-resize {
+    display: none !important;
+  }
+
+  .acid-card-title,
+  .card-icon-title {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+  .acid-icon,
+  .card-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .db-cloud-icon {
+    width: min(220px, 60vw);
+    height: min(220px, 60vw);
+  }
+  .db-cloud-icon-wrap {
+    margin: 1.25rem 0 1.75rem;
+  }
+
+  #copy-page-content {
+    position: fixed !important;
+    left: 1rem !important;
+    right: 1rem !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+  #copy-page-content .menu-item-title,
+  #copy-page-content .menu-item-desc {
+    white-space: normal;
+  }
+
+  .back-to-top {
+    width: 2.75rem;
+    height: 2.75rem;
+    right: 1rem !important;
+    bottom: 1rem !important;
+  }
+
+  #search-results ul.search > li {
+    padding: 0.85rem 1rem;
+  }
+  #search-results ul.search > li::after {
+    display: none;
+  }
+
+  .navigation {
+    gap: 0.6rem;
+  }
+
+  .yue table.docutils {
+    font-size: 0.82rem;
+  }
+  .yue table.docutils thead th,
+  .yue table.docutils tbody td {
+    padding: 0.6rem 0.75rem;
+  }
+}
