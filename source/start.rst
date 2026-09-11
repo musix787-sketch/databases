@@ -99,5 +99,3 @@ None of this means files are wrong for small jobs, a config file doesn't
 need ACID guarantees. But the moment two people, two processes, or a
 meaningful amount of data enter the picture, the DBMS starts paying for
 itself fast.
-
-----
