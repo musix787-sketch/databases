@@ -18,24 +18,14 @@ it, and what happens if two people try to change the same thing at once.
 The word gets used loosely, so it helps to split it into two things people
 usually mean at the same time without realizing it:
 
-.. grid:: 1 2 2 2
-   :gutter: 3
-
-   .. grid-item-card:: The database
-
-      The actual data sitting on disk, the rows, the files, the bytes. On
-      its own it's inert. It can't answer a question or stop you from
-      typing your age as "banana."
-
-      *Think: the filing cabinet itself.*
-
-   .. grid-item-card:: The DBMS
-
-      The software wrapped around that data, Postgres, MongoDB, whatever,
-      that enforces rules, answers queries, and keeps things intact when
-      the power goes out mid-write.
-
-      *Think: the librarian, not the shelves.*
+- **The database** — The actual data sitting on disk, the rows, the
+  files, the bytes. On its own it's inert. It can't answer a question or
+  stop you from typing your age as "banana." *Think: the filing cabinet
+  itself.*
+- **The DBMS** — The software wrapped around that data, Postgres,
+  MongoDB, whatever, that enforces rules, answers queries, and keeps
+  things intact when the power goes out mid-write. *Think: the
+  librarian, not the shelves.*
 
 People say "database" for both, the same way people say "phone" to mean
 the physical object and the whole service plan behind it. It rarely
@@ -68,11 +58,9 @@ chain of events kicks off before anything hits disk:
    tells your application "done", and any locks it was holding get
    released for the next transaction.
 
-.. note::
-
-   Almost every "the database is slow" complaint traces back to step
-   two, a plan that scans a million rows because the right index doesn't
-   exist, or exists but isn't being used.
+**Note:** Almost every "the database is slow" complaint traces back to
+step two, a plan that scans a million rows because the right index
+doesn't exist, or exists but isn't being used.
 
 .. _files-vs-dbms:
 
@@ -114,6 +102,4 @@ itself fast.
 
 ----
 
-.. seealso::
-
-   Next: :doc:`data-models`
+`Next: Data models <data-models.rst>`_
