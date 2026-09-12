@@ -50,12 +50,13 @@ Rotating credentials
 Rotation only works if it's boring and routine, not a special event that
 happens once after an incident.
 
-.. code-block:: text
+1. Create a new credential alongside the old one, both work
 
-   1. Create a new credential alongside the old one, both work
-   2. Update the app to use the new credential
-   3. Confirm nothing is still using the old one
-   4. Revoke the old credential
+2. Update the app to use the new credential
+
+3. Confirm nothing is still using the old one
+
+4. Revoke the old credential
 
 Skipping step 3 is the most common mistake, revoking the old credential
 before confirming nothing depends on it anymore turns a routine rotation into
