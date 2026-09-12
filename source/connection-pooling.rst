@@ -154,12 +154,13 @@ A leak is code that opens a connection and never gives it back, usually from
 a missing ``close()`` on an error path. Symptoms build slowly, connection
 count creeps up over hours or days instead of spiking suddenly.
 
-.. dropdown:: How to find one
+How to find one
+--------------------------------
 
-   Compare connection count against request rate over time. If connections
-   keep climbing even when traffic is flat or dropping, something isn't
-   releasing them. Check error handling paths first, leaks almost always
-   hide in the branch that only runs when something goes wrong.
+Compare connection count against request rate over time. If connections
+keep climbing even when traffic is flat or dropping, something isn't
+releasing them. Check error handling paths first, leaks almost always
+hide in the branch that only runs when something goes wrong.
 
 .. _pool-and-replicas:
 
