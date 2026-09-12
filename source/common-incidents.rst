@@ -33,9 +33,9 @@ How to spot it
 -------------------
 
 Look for queries with a long time between being received and actually
-   starting to run, not a long execution time once running. In Postgres,
-   check ``pg_locks`` joined against ``pg_stat_activity`` for sessions
-   waiting on a lock someone else is holding.
+starting to run, not a long execution time once running. In Postgres,
+check ``pg_locks`` joined against ``pg_stat_activity`` for sessions
+waiting on a lock someone else is holding.
 
 **Common cause:** a long-running transaction, often a batch job or an
 accidental interactive session someone forgot to commit, holding a lock that
@@ -50,24 +50,22 @@ Not a database problem exactly, but it shows up as one. Your app loads a list
 of 50 orders, then makes a separate query for each order's customer, 51
 queries where one would do.
 
-.. tab-set::
 
-   .. tab-item:: The N+1 way
 
-      .. code-block:: sql
+The N+1 way
 
-         SELECT * FROM orders LIMIT 50;
-         -- then, for each order:
-         SELECT * FROM customers WHERE id = ?;
+.. code-block:: sql
 
-   .. tab-item:: The fix
+   SELECT * FROM orders LIMIT 50;
+   -- then, for each order:
+   SELECT * FROM customers WHERE id = ?;
 
-      .. code-block:: sql
+.. code-block:: sql
 
-         SELECT orders.*, customers.*
-         FROM orders
-         JOIN customers ON customers.id = orders.customer_id
-         LIMIT 50;
+   SELECT orders.*, customers.*
+   FROM orders
+   JOIN customers ON customers.id = orders.customer_id
+   LIMIT 50;
 
 Most ORMs make this easy to write by accident. Look for "eager loading" or
 "includes" options in your ORM to fetch related data in the same query.
