@@ -42,41 +42,6 @@ Reference
 - `Popular systems, and where they actually shine <reference.rst#popular-systems-and-where-they-actually-shine>`_
 - `Glossary <reference.rst#glossary>`_
 
-----
-
-.. toctree::
-   :hidden:
-   :caption: Start here
-
-   start
-   data-models
-   under-the-hood
-   at-scale
-   reference
-
-.. toctree::
-   :hidden:
-   :caption: Operating in production
-
-   connection-pooling
-   backups-restore
-   zero-downtime-migrations
-   monitoring-alerting
-   common-incidents
-   caching-strategies
-
-.. toctree::
-   :hidden:
-   :caption: Security and access
-
-   auth-least-privilege
-   encryption
-   secrets-management
-
-.. toctree::
-   :hidden:
-   :caption: Scaling in practice
-
    read-write-splitting
    consistency-tradeoffs-at-scale
    multi-region-considerations
