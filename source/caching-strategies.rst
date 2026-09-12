@@ -105,11 +105,12 @@ A popular cache entry expires, and a burst of simultaneous requests all miss
 at once and all hit the database at the same time trying to refill it,
 sometimes bringing it down.
 
-.. dropdown:: A common fix
+A common fix
+--------------------------------------
 
-   Have only the first request that misses actually query the database,
-   while the rest wait briefly for that result instead of also querying.
-   Often called request coalescing or a "single flight" pattern.
+Have only the first request that misses actually query the database,
+while the rest wait briefly for that result instead of also querying.
+Often called request coalescing or a "single flight" pattern.
 
 .. _local-vs-distributed:
 
