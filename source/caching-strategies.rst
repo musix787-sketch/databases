@@ -35,7 +35,7 @@ reason about and to remove later if it's not helping.
 Cache aside in practice
 ----------------------------
 
-.. code-block:: text
+.. code-block:: python
 
    def get_user(id):
        cached = redis.get(f"user:{id}")
