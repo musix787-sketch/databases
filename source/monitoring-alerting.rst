@@ -69,15 +69,15 @@ real overhead. Start loose, tighten once you've cleared the obvious offenders.
 What good monitoring actually looks like
 -----------------------------------------------
 
-.. dropdown:: A minimal setup that covers most incidents
+A minimal setup that covers most incidents
 
-   - Dashboard showing connections, replication lag, and disk space, checked
-     without needing to dig
-   - Slow query log shipped somewhere searchable, not just sitting on disk
-   - Alerts that page a human only for things that need a human right now,
-     everything else goes to a channel someone checks during the day
-   - One dashboard your whole team actually knows how to read, better than
-     five dashboards nobody opens
+- Dashboard showing connections, replication lag, and disk space, checked without needing to dig
+
+- Slow query log shipped somewhere searchable, not just sitting on disk
+
+- Alerts that page a human only for things that need a human right now, everything else goes to a channel someone checks during the day
+
+- One dashboard your whole team actually knows how to read, better than five dashboards nobody opens
 
 The goal isn't collecting every possible metric. It's having the few that
 would have told you about your last three incidents before they became
