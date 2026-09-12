@@ -12,16 +12,16 @@ ACID gets recited like a magic word in interviews, but each letter is
 answering a specific, concrete fear about what could go wrong. It helps
 to think of them as promises, not features:
 
-- **A: Atomicity** - "Deduct from account A, add to account B" happens
+- **A - Atomicity** - "Deduct from account A, add to account B" happens
   as one indivisible unit. If the second half fails, the first half gets
   undone, you never end up with money vanishing between accounts.
-- **C: Consistency** - Any transaction takes the database from one
+- **C - Consistency** - Any transaction takes the database from one
   valid state to another. If you've said balances can't go negative, no
   transaction, however written, is allowed to break that.
-- **I: Isolation** - Two transactions running at the same moment can't
+- **I - Isolation** - Two transactions running at the same moment can't
   see each other's unfinished work. What you read looks like it happened
   before or after the other one, never halfway through.
-- **D: Durability** - Once the database says "committed," that data
+- **D - Durability** - Once the database says "committed," that data
   survives a crash a millisecond later. It's on disk (or logged
   somewhere durable), not sitting hopefully in RAM.
 
