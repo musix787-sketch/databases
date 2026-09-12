@@ -111,12 +111,15 @@ On-call runbooks
 For each alert that can page someone, write down what it means and the
 first two or three things to check, before an incident, not during one.
 
-.. dropdown:: What a decent runbook entry looks like
+What a decent runbook entry looks like
 
-   - What the alert means, in plain language
-   - The first query or dashboard to check
-   - The most common cause, and the most common fix
-   - When to escalate instead of trying to fix it alone
+- What the alert means, in plain language
+
+- The first query or dashboard to check
+
+- The most common cause, and the most common fix
+
+- When to escalate instead of trying to fix it alone
 
 .. _query-tracing:
 
