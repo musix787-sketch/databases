@@ -67,14 +67,14 @@ an outage.
 Who gets access to secrets
 --------------------------------
 
-.. dropdown:: A reasonable default
+A reasonable default
+---------------------------------
 
-   - Production credentials accessible to the deploy pipeline, not to every
-     developer's laptop
-   - Different credentials per environment, staging and production should
-     never share a password
-   - An audit trail of who accessed or changed a secret and when, most
-     secrets managers give you this for free
+- Production credentials accessible to the deploy pipeline, not to every developer's laptop
+
+- Different credentials per environment, staging and production should never share a password
+
+- An audit trail of who accessed or changed a secret and when, most secrets managers give you this for free
 
 .. note::
    The goal isn't paranoia, it's making sure that if one laptop or one CI
