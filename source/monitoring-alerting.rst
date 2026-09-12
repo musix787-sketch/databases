@@ -46,22 +46,20 @@ Turning on the slow query log
 
 Most databases can log any query over a threshold automatically.
 
-.. tab-set::
+Postgres
 
-   .. tab-item:: Postgres
+.. code-block:: sql
 
-      .. code-block:: sql
+-- Log anything slower than 200ms
+   ALTER SYSTEM SET log_min_duration_statement = 200;
+   SELECT pg_reload_conf();
 
-         -- Log anything slower than 200ms
-         ALTER SYSTEM SET log_min_duration_statement = 200;
-         SELECT pg_reload_conf();
+MySQL
 
-   .. tab-item:: MySQL
+.. code-block:: sql
 
-      .. code-block:: sql
-
-         SET GLOBAL slow_query_log = 'ON';
-         SET GLOBAL long_query_time = 0.2;
+   SET GLOBAL slow_query_log = 'ON';
+   SET GLOBAL long_query_time = 0.2;
 
 Don't set the threshold too low on a busy database, logging every query adds
 real overhead. Start loose, tighten once you've cleared the obvious offenders.
