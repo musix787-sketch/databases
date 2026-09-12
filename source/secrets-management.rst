@@ -116,12 +116,13 @@ credential would even remain useful.
 Detecting a leaked secret
 ------------------------------
 
-.. dropdown:: A few common ways secrets leak
+A few common ways secrets leak
 
-   - Committed to a public or private git repo, including in old commit
-     history
-   - Printed in application logs during an error
-   - Pasted into a chat message or a ticket while debugging
+- Committed to a public or private git repo, including in old commit history
+
+- Printed in application logs during an error
+
+- Pasted into a chat message or a ticket while debugging
 
 Automated secret scanning tools can catch a lot of these before or shortly
 after they happen, worth running one against your repos as a matter of
