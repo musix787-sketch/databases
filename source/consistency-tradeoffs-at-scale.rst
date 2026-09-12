@@ -54,30 +54,16 @@ common middle ground, sometimes called "read your writes" consistency.
 Per system, what you actually get
 ----------------------------------------
 
-.. tab-set::
+Postgres (single primary)
+* Strong consistency by default on the primary.
+* Reads from replicas can be stale depending on replication lag.
 
-   .. tab-item:: Postgres (single primary)
+MongoDB
+* **Tunable per query:** majority read/write concern for strong guarantees, or relaxed levels for speed. Defaults have gotten stricter over time, but it's still a per-query decision.
 
-      .. code-block:: text
-
-         Strong consistency by default on the primary.
-         Reads from replicas can be stale depending on replication lag.
-
-   .. tab-item:: MongoDB
-
-      .. code-block:: text
-
-         Tunable per query: majority read/write concern for strong
-         guarantees, or relaxed levels for speed. Defaults have gotten
-         stricter over time, but it's still a per-query decision.
-
-   .. tab-item:: DynamoDB
-
-      .. code-block:: text
-
-         Eventually consistent reads by default, cheaper.
-         Strongly consistent reads are available, cost more and can't
-         span multiple regions.
+DynamoDB
+* Eventually consistent reads by default, cheaper.
+* Strongly consistent reads are available, cost more and can't span multiple regions.
 
 .. _what-eventual-means:
 
