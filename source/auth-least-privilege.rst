@@ -53,7 +53,6 @@ Setting this up
 
 
 .. code-block:: sql
---- Postgres
 
      CREATE ROLE app_user LOGIN PASSWORD '...';
      GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_user;
@@ -62,7 +61,6 @@ Setting this up
      GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly_user;
 
 .. code-block:: sql
---- MySQL
 
      CREATE USER 'app_user'@'%' IDENTIFIED BY '...';
      GRANT SELECT, INSERT, UPDATE, DELETE ON mydb.* TO 'app_user'@'%';
