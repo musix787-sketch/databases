@@ -29,7 +29,8 @@ Lock contention
 Not a deadlock, just a lot of transactions queuing up for the same row or
 table. Feels like the database "randomly" got slow.
 
-.. dropdown:: How to spot it
+How to spot it
+-------------------
 
    Look for queries with a long time between being received and actually
    starting to run, not a long execution time once running. In Postgres,
