@@ -23,8 +23,6 @@ change permissions, not just misbehave inside its own data.
 Splitting roles by job
 --------------------------
 
-Postgres
-
 A reasonable minimum split for most production systems:
 
 .. list-table::
@@ -52,7 +50,7 @@ A reasonable minimum split for most production systems:
 Setting this up
 -------------------
 
-
+Postgres
 
 .. code-block:: sql
 
@@ -61,6 +59,8 @@ Setting this up
 
      CREATE ROLE readonly_user LOGIN PASSWORD '...';
      GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly_user;
+
+MySQL
 
 .. code-block:: sql
 
