@@ -59,7 +59,7 @@ The restore drill
 Backups fail silently more often than they fail loudly. A backup job can run
 green for months while producing a file that can't actually be restored.
 
-.. dropdown:: A basic restore drill checklist
+A basic restore drill checklist
 
    - Spin up a fresh instance, separate from production
    - Restore the latest backup onto it
