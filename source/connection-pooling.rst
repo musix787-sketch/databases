@@ -72,14 +72,14 @@ For most cloud databases on SSDs, that's roughly ``(cores * 2) + 1``. Start
 small, watch your metrics, and go up only if you can show the pool itself is
 the bottleneck.
 
-.. dropdown:: How to tell the pool is actually the problem
-
-   Check for queries queuing up waiting for a connection, not queries running
-   slowly once they get one. If ``pg_stat_activity`` shows a lot of
-   connections in ``idle`` and requests are still timing out before they even
-   start a query, that's a pool problem. If queries are slow once they're
-   running, that's a different problem, probably missing indexes or lock
-   contention.
+How to tell the pool is actually the problem
+-----------------------------
+Check for queries queuing up waiting for a connection, not queries running
+slowly once they get one. If ``pg_stat_activity`` shows a lot of
+connections in ``idle`` and requests are still timing out before they even
+start a query, that's a pool problem. If queries are slow once they're
+running, that's a different problem, probably missing indexes or lock
+contention.
 
 .. _pooling-serverless:
 
