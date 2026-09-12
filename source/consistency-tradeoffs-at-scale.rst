@@ -55,14 +55,19 @@ Per system, what you actually get
 ----------------------------------------
 
 Postgres (single primary)
+
 - Strong consistency by default on the primary.
+
 - Reads from replicas can be stale depending on replication lag.
 
 MongoDB
+
 - Tunable per query: majority read/write concern for strong guarantees, or relaxed levels for speed. Defaults have gotten stricter over time, but it's still a per-query decision.
 
 DynamoDB
+
 - Eventually consistent reads by default, cheaper.
+
 - Strongly consistent reads are available, cost more and can't span multiple regions.
 
 .. _what-eventual-means:
