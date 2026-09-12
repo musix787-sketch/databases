@@ -106,14 +106,17 @@ Renaming a column safely
 A rename is instant on the database side, but breaks any code still using the
 old name the moment it runs. Do it in steps instead:
 
-.. code-block:: text
+1. Add the new column
 
-   1. Add the new column
-   2. Dual write to both old and new
-   3. Backfill the new column for existing rows
-   4. Deploy code that reads from the new column
-   5. Stop writing to the old column
-   6. Drop the old column, later, once you're confident
+2. Dual write to both old and new
+
+3. Backfill the new column for existing rows
+
+4. Deploy code that reads from the new column
+
+5. Stop writing to the old column
+
+6. Drop the old column, later, once you're confident
 
 .. _dropping-columns:
 
