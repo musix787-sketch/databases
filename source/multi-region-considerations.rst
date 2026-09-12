@@ -117,7 +117,7 @@ primary, updating routing so traffic flows there, and accepting that
 anything not yet replicated at the moment of failure is gone.
 
 Why this is harder to test than single-region failover
--=----------------------------
+-----------------------------
 
 You can't easily simulate "an entire AWS region disappeared" in a
 staging environment the same way you can kill one server. Most teams
