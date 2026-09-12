@@ -73,13 +73,13 @@ The famously hard part. Two honest approaches:
 What not to cache
 -----------------------
 
-.. dropdown:: A few things that usually don't belong in a cache
+A few things that usually don't belong in a cache
 
-   - Anything where a stale read causes real harm, account balances,
+- Anything where a stale read causes real harm, account balances,
      inventory counts right before checkout
-   - Data that changes on almost every read anyway, caching buys you nothing
+- Data that changes on almost every read anyway, caching buys you nothing
      if the cache would miss most of the time
-   - Anything already fast. Caching a query that takes 2ms adds complexity
+- Anything already fast. Caching a query that takes 2ms adds complexity
      for a saving nobody will notice
 
 Caching is a trade of correctness for speed. Reach for it once you know
