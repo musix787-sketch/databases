@@ -62,15 +62,13 @@ Setting this up
 
    MySQL
 
-      .. code-block:: sql
+.. code-block:: sql
 
-         CREATE USER 'app_user'@'%' IDENTIFIED BY '...';
-         GRANT SELECT, INSERT, UPDATE, DELETE ON mydb.* TO 'app_user'@'%';
+     CREATE USER 'app_user'@'%' IDENTIFIED BY '...';
+     GRANT SELECT, INSERT, UPDATE, DELETE ON mydb.* TO 'app_user'@'%';
 
-         CREATE USER 'readonly_user'@'%' IDENTIFIED BY '...';
-         GRANT SELECT ON mydb.* TO 'readonly_user'@'%';
-
-.. _defaults-matter:
+     CREATE USER 'readonly_user'@'%' IDENTIFIED BY '...';
+     GRANT SELECT ON mydb.* TO 'readonly_user'@'%';
 
 Default privileges catch you later
 ----------------------------------------
