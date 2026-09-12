@@ -50,9 +50,10 @@ A reasonable minimum split for most production systems:
 Setting this up
 -------------------
 
-Postgres
+
 
 .. code-block:: sql
+--- Postgres
 
      CREATE ROLE app_user LOGIN PASSWORD '...';
      GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_user;
@@ -60,9 +61,8 @@ Postgres
      CREATE ROLE readonly_user LOGIN PASSWORD '...';
      GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly_user;
 
- MySQL
-
 .. code-block:: sql
+--- MySQL
 
      CREATE USER 'app_user'@'%' IDENTIFIED BY '...';
      GRANT SELECT, INSERT, UPDATE, DELETE ON mydb.* TO 'app_user'@'%';
