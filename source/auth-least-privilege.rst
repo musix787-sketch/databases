@@ -23,6 +23,8 @@ change permissions, not just misbehave inside its own data.
 Splitting roles by job
 --------------------------
 
+Postgres
+
 A reasonable minimum split for most production systems:
 
 .. list-table::
