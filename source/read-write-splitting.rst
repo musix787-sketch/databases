@@ -126,13 +126,14 @@ floating connection string or DNS record that gets repointed automatically.
 Connection routing during failover
 -----------------------------------------
 
-.. dropdown:: What breaks if this isn't handled well
+What breaks if this isn't handled well
+----------------------------------------
 
-   During a failover, there's a window where the old primary is gone and the
-   new one isn't ready yet. Requests that hit this window fail. Good
-   failover tooling minimizes this window to seconds, bad tooling can leave
-   it open for minutes. Test failover deliberately, don't wait for a real
-   outage to find out how long it takes.
+During a failover, there's a window where the old primary is gone and the
+new one isn't ready yet. Requests that hit this window fail. Good
+failover tooling minimizes this window to seconds, bad tooling can leave
+it open for minutes. Test failover deliberately, don't wait for a real
+outage to find out how long it takes.
 
 .. _replicas-for-reporting:
 
