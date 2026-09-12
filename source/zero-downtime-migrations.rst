@@ -44,13 +44,15 @@ The expand and contract pattern
 The trick for anything risky is to split one change into several small,
 individually safe steps, deploying code in between.
 
-.. code-block:: text
+1. **Expand:** add the new column/table, nothing reads from it yet
 
-   1. Expand: add the new column/table, nothing reads from it yet
-   2. Backfill: copy or compute data into the new column in small batches
-   3. Dual write: app writes to both old and new, still reads from old
-   4. Switch reads: app reads from new, still writes both for safety
-   5. Contract: stop writing old, drop the old column
+2. **Backfill:** copy or compute data into the new column in small batches
+
+3. **Dual write:** app writes to both old and new, still reads from old
+
+4. **Switch reads:** app reads from new, still writes both for safety
+
+5. **Contract:** stop writing old, drop the old column
 
 Each step is deployable and reversible on its own. If step 3 breaks
 something, you roll back to step 2 without ever touching the schema again.
