@@ -62,29 +62,27 @@ something, you roll back to step 2 without ever touching the schema again.
 Adding NOT NULL without locking the table
 -----------------------------------------------
 
-.. tab-set::
+The slow, locking way
 
-   .. tab-item:: The slow, locking way
+.. code-block:: sql
 
-      .. code-block:: sql
+   ALTER TABLE users ADD COLUMN email TEXT NOT NULL DEFAULT '';
 
-         ALTER TABLE users ADD COLUMN email TEXT NOT NULL DEFAULT '';
+The safe way
 
-   .. tab-item:: The safe way
+.. code-block:: sql
 
-      .. code-block:: sql
+   -- Add it nullable first
+   ALTER TABLE users ADD COLUMN email TEXT;
 
-         -- Add it nullable first
-         ALTER TABLE users ADD COLUMN email TEXT;
+   -- Backfill in batches, not one giant UPDATE
+   UPDATE users SET email = '' WHERE email IS NULL AND id BETWEEN 1 AND 10000;
 
-         -- Backfill in batches, not one giant UPDATE
-         UPDATE users SET email = '' WHERE email IS NULL AND id BETWEEN 1 AND 10000;
+   -- Add the constraint as NOT VALID, instant
+   ALTER TABLE users ADD CONSTRAINT email_not_null CHECK (email IS NOT NULL) NOT VALID;
 
-         -- Add the constraint as NOT VALID, instant
-         ALTER TABLE users ADD CONSTRAINT email_not_null CHECK (email IS NOT NULL) NOT VALID;
-
-         -- Validate separately, this scans but doesn't block writes
-         ALTER TABLE users VALIDATE CONSTRAINT email_not_null;
+   -- Validate separately, this scans but doesn't block writes
+   ALTER TABLE users VALIDATE CONSTRAINT email_not_null;
 
 .. _migration-tips:
 
