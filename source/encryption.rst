@@ -67,7 +67,7 @@ Column level encryption
 For fields that are sensitive enough that even a database admin, or an
 attacker with valid read access, shouldn't be able to just read them.
 
-**What this actually looks like**
+What this actually looks like
 ----------------------------------
 The application encrypts the value before it's ever sent to the database,
 and decrypts it after reading it back. The database just stores
