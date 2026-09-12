@@ -50,17 +50,17 @@ A reasonable minimum split for most production systems:
 Setting this up
 -------------------
 
-   Postgres
+Postgres
 
-      .. code-block:: sql
+.. code-block:: sql
 
-         CREATE ROLE app_user LOGIN PASSWORD '...';
-         GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_user;
+     CREATE ROLE app_user LOGIN PASSWORD '...';
+     GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_user;
 
-         CREATE ROLE readonly_user LOGIN PASSWORD '...';
-         GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly_user;
+     CREATE ROLE readonly_user LOGIN PASSWORD '...';
+     GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly_user;
 
-   MySQL
+ MySQL
 
 .. code-block:: sql
 
