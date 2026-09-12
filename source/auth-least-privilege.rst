@@ -50,9 +50,7 @@ A reasonable minimum split for most production systems:
 Setting this up
 -------------------
 
-.. tab-set::
-
-   .. tab-item:: Postgres
+   Postgres
 
       .. code-block:: sql
 
@@ -62,7 +60,7 @@ Setting this up
          CREATE ROLE readonly_user LOGIN PASSWORD '...';
          GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly_user;
 
-   .. tab-item:: MySQL
+   MySQL
 
       .. code-block:: sql
 
