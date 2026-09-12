@@ -61,11 +61,11 @@ green for months while producing a file that can't actually be restored.
 
 A basic restore drill checklist
 
-# Spin up a fresh instance, separate from production
-# Restore the latest backup onto it
-# Run a handful of real queries against it and check the results look right
-# Time how long the restore actually took
-# Do this on a schedule, not just once
+* Spin up a fresh instance, separate from production
+* Restore the latest backup onto it
+* Run a handful of real queries against it and check the results look right
+* Time how long the restore actually took
+* Do this on a schedule, not just once
 
 That last point matters most. A restore that worked six months ago tells you
 nothing about whether it works today, schemas change, backup tooling gets
