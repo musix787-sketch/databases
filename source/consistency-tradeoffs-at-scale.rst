@@ -154,6 +154,7 @@ Testing your assumptions
 
 A way to actually verify what your database gives you
 ------------------------------
+
 Write a value, immediately read it from a different node or replica
 than the one you wrote to, and check what comes back. Do this under
 load, not just once, quietly. It's easy to assume strong consistency
