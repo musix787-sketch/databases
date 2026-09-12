@@ -32,7 +32,7 @@ table. Feels like the database "randomly" got slow.
 How to spot it
 -------------------
 
-   Look for queries with a long time between being received and actually
+Look for queries with a long time between being received and actually
    starting to run, not a long execution time once running. In Postgres,
    check ``pg_locks`` joined against ``pg_stat_activity`` for sessions
    waiting on a lock someone else is holding.
