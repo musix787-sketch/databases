@@ -67,14 +67,14 @@ Column level encryption
 For fields that are sensitive enough that even a database admin, or an
 attacker with valid read access, shouldn't be able to just read them.
 
-.. dropdown:: What this actually looks like
-
-   The application encrypts the value before it's ever sent to the database,
-   and decrypts it after reading it back. The database just stores
-   ciphertext, it has no idea what the real value is. This means you can't
-   run a normal ``WHERE email = ?`` query against it directly, searching
-   encrypted columns needs its own pattern, like a separate searchable hash
-   of the value.
+**What this actually looks like**
+----------------------------------
+The application encrypts the value before it's ever sent to the database,
+and decrypts it after reading it back. The database just stores
+ciphertext, it has no idea what the real value is. This means you can't
+run a normal ``WHERE email = ?`` query against it directly, searching
+encrypted columns needs its own pattern, like a separate searchable hash
+of the value.
 
 .. warning::
    Column level encryption is only as good as where the key lives. Storing
