@@ -50,7 +50,7 @@ Postgres
 
 .. code-block:: sql
 
--- Log anything slower than 200ms
+   -- Log anything slower than 200ms
    ALTER SYSTEM SET log_min_duration_statement = 200;
    SELECT pg_reload_conf();
 
