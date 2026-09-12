@@ -41,7 +41,3 @@ Reference
 
 - `Popular systems, and where they actually shine <reference.rst#popular-systems-and-where-they-actually-shine>`_
 - `Glossary <reference.rst#glossary>`_
-
-   read-write-splitting
-   consistency-tradeoffs-at-scale
-   multi-region-considerations
