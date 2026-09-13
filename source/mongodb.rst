@@ -42,29 +42,27 @@ performance problems.
 Setting it up
 ------------------
 
-.. tab-set::
+Docker
 
-   .. tab-item:: Docker
+.. code-block:: bash
 
-      .. code-block:: bash
+   docker run --name mongo -p 27017:27017 -d mongo:7
 
-         docker run --name mongo -p 27017:27017 -d mongo:7
+macOS (Homebrew)
 
-   .. tab-item:: macOS (Homebrew)
+.. code-block:: bash
 
-      .. code-block:: bash
+   brew tap mongodb/brew
+   brew install mongodb-community
+   brew services start mongodb-community
 
-         brew tap mongodb/brew
-         brew install mongodb-community
-         brew services start mongodb-community
+Atlas (managed)
 
-   .. tab-item:: Atlas (managed)
+1. Create a free cluster at mongodb.com/atlas
 
-      .. code-block:: text
+2. Add your IP to the network access list
 
-         1. Create a free cluster at mongodb.com/atlas
-         2. Add your IP to the network access list
-         3. Grab the connection string and use it directly
+3. Grab the connection string and use it directly
 
 .. _mongo-first-queries:
 
