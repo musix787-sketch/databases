@@ -37,21 +37,19 @@ joining, leaving, or failing without coordination overhead.
 Setting it up
 ------------------
 
-.. tab-set::
+Docker
 
-   .. tab-item:: Docker
+.. code-block:: bash
 
-      .. code-block:: bash
+   docker run --name cassandra -p 9042:9042 -d cassandra:5
 
-         docker run --name cassandra -p 9042:9042 -d cassandra:5
+Local install
 
-   .. tab-item:: Local install
+.. code-block:: bash
 
-      .. code-block:: bash
-
-         tar -xzf apache-cassandra-5.0-bin.tar.gz
-         cd apache-cassandra-5.0
-         bin/cassandra -f
+   tar -xzf apache-cassandra-5.0-bin.tar.gz
+   cd apache-cassandra-5.0
+   bin/cassandra -f
 
 .. _cassandra-first-queries:
 
@@ -175,8 +173,3 @@ When it's not the right fit
 - Applications needing flexible, ad hoc querying
 - Small to medium datasets that don't need this level of horizontal scale
 - Teams without the operational capacity to run a distributed database
-
-.. seealso::
-   :doc:`multi-region-considerations` and
-   :doc:`consistency-tradeoffs-at-scale` cover the distributed-systems
-   concepts Cassandra leans on most heavily.
