@@ -1,10 +1,6 @@
 Redis
 ========
 
-:bdg-danger:`In-memory` :bdg-warning:`Not a database by default` :bdg-info:`Key-value`
-
-Absurdly fast because it mostly lives in RAM, and that comes with trade-offs.
-
 .. _redis-what-it-is:
 
 What it is
@@ -25,40 +21,39 @@ predictable and fast, no lock contention between commands. Data lives in
 memory as native structures: strings, hashes, lists, sets, sorted sets,
 streams, not rows or documents.
 
-.. dropdown:: Why single-threaded is a feature, not a limitation
+Why single-threaded is a feature, not a limitation
+-----------------------------------
 
-   Every command runs to completion before the next one starts, so there's
-   no need for locks around individual operations. This makes some
-   operations (like ``INCR``) atomic for free, without any explicit
-   transaction. The trade-off is that one slow command (an unbounded
-   ``KEYS *`` on a huge dataset) blocks everything else.
+Every command runs to completion before the next one starts, so there's
+no need for locks around individual operations. This makes some
+operations (like ``INCR``) atomic for free, without any explicit
+transaction. The trade-off is that one slow command (an unbounded
+``KEYS *`` on a huge dataset) blocks everything else.
 
 .. _redis-setup:
 
 Setting it up
 ------------------
 
-.. tab-set::
+Docker
 
-   .. tab-item:: Docker
+.. code-block:: bash
 
-      .. code-block:: bash
+   docker run --name redis -p 6379:6379 -d redis:7
 
-         docker run --name redis -p 6379:6379 -d redis:7
+macOS (Homebrew)
 
-   .. tab-item:: macOS (Homebrew)
+.. code-block:: bash
 
-      .. code-block:: bash
+   brew install redis
+   brew services start redis
 
-         brew install redis
-         brew services start redis
+Ubuntu
 
-   .. tab-item:: Ubuntu
+.. code-block:: bash
 
-      .. code-block:: bash
-
-         sudo apt install redis-server
-         sudo systemctl enable --now redis-server
+   sudo apt install redis-server
+   sudo systemctl enable --now redis-server
 
 .. _redis-first-commands:
 
