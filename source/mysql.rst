@@ -1,10 +1,6 @@
 MySQL
 ========
 
-:bdg-primary:`Relational` :bdg-success:`Strong consistency` :bdg-warning:`Storage engines`
-
-The database that grew up powering the web, and never really left.
-
 .. _mysql-what-it-is:
 
 What it is
@@ -26,39 +22,38 @@ differ. InnoDB is the default and only one most people use today, it's
 transactional, MVCC-based, and row-locking. The older MyISAM engine is
 table-locking and non-transactional, mostly a historical footnote now.
 
-.. dropdown:: Why storage engines matter today
+Why storage engines matter today
+-----------------------------------
 
-   Even though InnoDB is the default, the engine concept still shows up:
-   some managed MySQL offerings and specialized forks use alternative
-   engines for specific workloads (columnar analytics, in-memory tables).
-   Knowing ``SHOW ENGINES;`` exists saves confusion later.
+Even though InnoDB is the default, the engine concept still shows up:
+some managed MySQL offerings and specialized forks use alternative
+engines for specific workloads (columnar analytics, in-memory tables).
+Knowing ``SHOW ENGINES;`` exists saves confusion later.
 
 .. _mysql-setup:
 
 Setting it up
 ------------------
 
-.. tab-set::
+Docker
 
-   .. tab-item:: Docker
+.. code-block:: bash
 
-      .. code-block:: bash
+   docker run --name mysql-db -e MYSQL_ROOT_PASSWORD=secret -p 3306:3306 -d mysql:8
 
-         docker run --name mysql-db -e MYSQL_ROOT_PASSWORD=secret -p 3306:3306 -d mysql:8
+Ubuntu
 
-   .. tab-item:: Ubuntu
+.. code-block:: bash
 
-      .. code-block:: bash
+   sudo apt install mysql-server
+   sudo mysql_secure_installation
 
-         sudo apt install mysql-server
-         sudo mysql_secure_installation
+macOS (Homebrew)
 
-   .. tab-item:: macOS (Homebrew)
+.. code-block:: bash
 
-      .. code-block:: bash
-
-         brew install mysql
-         brew services start mysql
+   brew install mysql
+   brew services start mysql
 
 .. _mysql-first-queries:
 
@@ -87,19 +82,21 @@ Your first queries
 Notable functionality
 --------------------------
 
-.. grid:: 2
+Replication
 
-   .. grid-item-card:: Replication
+- Classic binlog-based async replication
 
-      - Classic binlog-based async replication
-      - Group Replication for multi-primary setups
-      - Widely supported by every managed cloud offering
+- Group Replication for multi-primary setups
 
-   .. grid-item-card:: JSON support
+- Widely supported by every managed cloud offering
 
-      - Native ``JSON`` column type since 5.7
-      - Generated columns can index into JSON fields
-      - Not as deep as Postgres's JSONB, but solid for most needs
+JSON support
+
+- Native ``JSON`` column type since 5.7
+
+- Generated columns can index into JSON fields
+
+- Not as deep as Postgres's JSONB, but solid for most needs
 
 .. _mysql-indexes:
 
@@ -153,21 +150,19 @@ In production
 Pros and cons
 ------------------
 
-.. grid:: 2
+Pros
 
-   .. grid-item-card:: Pros
+- Extremely well understood, huge hosting and tooling ecosystem
+- Fast for simple read-heavy web workloads
+- Easy replication setup for read scaling
+- Free and open source (with a commercial tier from Oracle)
 
-      - Extremely well understood, huge hosting and tooling ecosystem
-      - Fast for simple read-heavy web workloads
-      - Easy replication setup for read scaling
-      - Free and open source (with a commercial tier from Oracle)
+Cons
 
-   .. grid-item-card:: Cons
-
-      - Historically weaker standards compliance than Postgres
-      - JSON and advanced data types feel bolted on, not native
-      - Clustered primary key design punishes bad key choices
-      - Fewer extensibility options than Postgres's extension system
+- Historically weaker standards compliance than Postgres
+- JSON and advanced data types feel bolted on, not native
+- Clustered primary key design punishes bad key choices
+- Fewer extensibility options than Postgres's extension system
 
 .. _mysql-when-to-use:
 
