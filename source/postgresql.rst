@@ -23,13 +23,14 @@ grouped into tables, uses a write-ahead log (WAL) for durability and crash
 recovery, and relies on MVCC (multi-version concurrency control) so readers
 never block writers and writers never block readers.
 
-.. dropdown:: What MVCC actually buys you
+What MVCC actually buys you
+-------------------------------
 
-   Instead of locking a row for every read, Postgres keeps multiple
-   versions of a row around. A transaction sees a consistent snapshot of
-   the database as of when it started, regardless of what other
-   transactions are doing at the same time. Old row versions get cleaned
-   up later by a background process called autovacuum.
+Instead of locking a row for every read, Postgres keeps multiple
+versions of a row around. A transaction sees a consistent snapshot of
+the database as of when it started, regardless of what other
+transactions are doing at the same time. Old row versions get cleaned
+up later by a background process called autovacuum.
 
 .. _pg-setup:
 
