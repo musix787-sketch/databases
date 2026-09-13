@@ -1,10 +1,6 @@
 PostgreSQL
 =============
 
-:bdg-primary:`Relational` :bdg-success:`Strong consistency` :bdg-info:`Open source`
-
-The default choice for most new applications, and for good reason.
-
 .. _pg-what-it-is:
 
 What it is
@@ -40,29 +36,27 @@ never block writers and writers never block readers.
 Setting it up
 ------------------
 
-.. tab-set::
+macOS (Homebrew)
 
-   .. tab-item:: macOS (Homebrew)
+.. code-block:: bash
 
-      .. code-block:: bash
+   brew install postgresql@16
+   brew services start postgresql@16
+   createdb myapp
 
-         brew install postgresql@16
-         brew services start postgresql@16
-         createdb myapp
+Docker
 
-   .. tab-item:: Docker
+.. code-block:: bash
 
-      .. code-block:: bash
+   docker run --name pg -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:16
 
-         docker run --name pg -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:16
+Ubuntu
 
-   .. tab-item:: Ubuntu
+.. code-block:: bash
 
-      .. code-block:: bash
-
-         sudo apt install postgresql postgresql-contrib
-         sudo -u postgres createuser --interactive
-         sudo -u postgres createdb myapp
+   sudo apt install postgresql postgresql-contrib
+   sudo -u postgres createuser --interactive
+   sudo -u postgres createdb myapp
 
 .. _pg-first-queries:
 
@@ -86,21 +80,19 @@ Your first queries
 Functionality that sets it apart
 ----------------------------------------
 
-.. grid:: 2
+Data types
 
-   .. grid-item-card:: Data types
+- ``JSONB`` for schema-flexible document data, indexable
+- ``ARRAY`` columns
+- Native ``UUID``, ``INET``, range types
+- Full-text search built in
 
-      - ``JSONB`` for schema-flexible document data, indexable
-      - ``ARRAY`` columns
-      - Native ``UUID``, ``INET``, range types
-      - Full-text search built in
+Extensibility
 
-   .. grid-item-card:: Extensibility
-
-      - PostGIS for geospatial data
-      - pgvector for embeddings and similarity search
-      - Foreign data wrappers to query other databases
-      - Custom functions in SQL, PL/pgSQL, or even Python
+- PostGIS for geospatial data
+- pgvector for embeddings and similarity search
+- Foreign data wrappers to query other databases
+- Custom functions in SQL, PL/pgSQL, or even Python
 
 .. _pg-indexes:
 
@@ -155,21 +147,19 @@ replication between databases.
 Pros and cons
 ------------------
 
-.. grid:: 2
+Pros
 
-   .. grid-item-card:: Pros
+- Rock-solid ACID guarantees
+- Enormous extension ecosystem
+- Excellent JSON support without giving up SQL
+- Free, no licensing games
 
-      - Rock-solid ACID guarantees
-      - Enormous extension ecosystem
-      - Excellent JSON support without giving up SQL
-      - Free, no licensing games
+Cons
 
-   .. grid-item-card:: Cons
-
-      - Vertical scaling has a ceiling; sharding isn't built in
-      - Connection overhead means pooling is mandatory at scale
-      - ``VACUUM`` tuning is a real skill you have to learn
-      - Replication lag can bite naive read-replica setups
+- Vertical scaling has a ceiling; sharding isn't built in
+- Connection overhead means pooling is mandatory at scale
+- ``VACUUM`` tuning is a real skill you have to learn
+- Replication lag can bite naive read-replica setups
 
 .. _pg-when-to-use:
 
