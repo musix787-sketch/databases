@@ -1,10 +1,6 @@
 MongoDB
 ==========
 
-:bdg-primary:`Document` :bdg-warning:`Tunable consistency` :bdg-info:`Schema-flexible`
-
-The database that made "just store the JSON" a legitimate architecture choice.
-
 .. _mongo-what-it-is:
 
 What it is
