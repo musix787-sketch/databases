@@ -27,14 +27,15 @@ replica sets: one primary takes writes, secondaries replicate
 asynchronously via an operation log (the oplog), and can take over
 automatically if the primary goes down.
 
-.. dropdown:: Embedding vs referencing
+Embedding vs referencing
+---------------------------------
 
-   The core modeling decision in MongoDB. Embed related data in one
-   document when it's read together and doesn't grow unbounded (an order
-   and its line items). Reference by ID when data is shared across many
-   parents or grows without limit (a user referenced by thousands of
-   posts). Getting this wrong is the most common source of MongoDB
-   performance problems.
+The core modeling decision in MongoDB. Embed related data in one
+document when it's read together and doesn't grow unbounded (an order
+and its line items). Reference by ID when data is shared across many
+parents or grows without limit (a user referenced by thousands of
+posts). Getting this wrong is the most common source of MongoDB
+performance problems.
 
 .. _mongo-setup:
 
