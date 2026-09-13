@@ -85,20 +85,21 @@ Your first queries
 Notable functionality
 --------------------------
 
-.. grid:: 2
+Aggregation pipeline
 
-   .. grid-item-card:: Aggregation pipeline
+- Multi-stage data processing, similar in spirit to SQL's GROUP BY but far more composable
 
-      - Multi-stage data processing, similar in spirit to SQL's GROUP BY
-        but far more composable
-      - Runs inside the database, close to the data
-      - Can replace a surprising amount of application-side data munging
+- Runs inside the database, close to the data
 
-   .. grid-item-card:: Flexible schema
+- Can replace a surprising amount of application-side data munging
 
-      - Documents in the same collection can have different shapes
-      - Schema validation rules are optional, not mandatory
-      - Great for evolving data models early in a product's life
+Flexible schema
+
+- Documents in the same collection can have different shapes
+
+- Schema validation rules are optional, not mandatory
+
+- Great for evolving data models early in a product's life
 
 .. _mongo-consistency:
 
