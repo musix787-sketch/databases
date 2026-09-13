@@ -1,10 +1,6 @@
 SQLite
 =========
 
-:bdg-primary:`Relational` :bdg-success:`Embedded` :bdg-info:`Zero configuration`
-
-Not a toy database. It's probably the most widely deployed database engine on Earth.
-
 .. _sqlite-what-it-is:
 
 What it is
@@ -25,12 +21,13 @@ Concurrency is handled with file-level locking: historically a single
 writer at a time for the whole database, though WAL mode (write-ahead
 logging) allows one writer to proceed concurrently with multiple readers.
 
-.. dropdown:: Why "one writer at a time" is rarely the problem people expect
+Why "one writer at a time" is rarely the problem people expect
+-----------------------------------
 
-   Most applications, even fairly busy ones, spend far more time reading
-   than writing, and individual writes are fast. The write-serialization
-   limit becomes a real problem only under genuinely concurrent, sustained
-   write load, exactly the situation SQLite was never designed for.
+Most applications, even fairly busy ones, spend far more time reading
+than writing, and individual writes are fast. The write-serialization
+limit becomes a real problem only under genuinely concurrent, sustained
+write load, exactly the situation SQLite was never designed for.
 
 .. _sqlite-setup:
 
@@ -40,26 +37,24 @@ Setting it up
 There's no server to install for most languages, SQLite ships as a
 library.
 
-.. tab-set::
+Python (built in)
 
-   .. tab-item:: Python (built in)
+.. code-block:: python
 
-      .. code-block:: python
+   import sqlite3
+   conn = sqlite3.connect("app.db")
 
-         import sqlite3
-         conn = sqlite3.connect("app.db")
+Node.js
 
-   .. tab-item:: Node.js
+.. code-block:: bash
 
-      .. code-block:: bash
+   npm install better-sqlite3
 
-         npm install better-sqlite3
+CLI
 
-   .. tab-item:: CLI
+.. code-block:: bash
 
-      .. code-block:: bash
-
-         sqlite3 app.db
+   sqlite3 app.db
 
 .. _sqlite-first-queries:
 
@@ -83,20 +78,17 @@ Your first queries
 Notable functionality
 --------------------------
 
-.. grid:: 2
+Type flexibility
 
-   .. grid-item-card:: Type flexibility
+- Columns have "type affinity" rather than strict types
+- You can insert text into an integer column; SQLite tries to coerce it rather than reject it
+- Convenient for scripting, occasionally a footgun
 
-      - Columns have "type affinity" rather than strict types
-      - You can insert text into an integer column; SQLite tries to
-        coerce it rather than reject it
-      - Convenient for scripting, occasionally a footgun
+Extensions
 
-   .. grid-item-card:: Extensions
-
-      - FTS5 for full-text search, built in
-      - JSON1 extension for querying JSON columns
-      - R-Tree module for spatial indexing
+- FTS5 for full-text search, built in
+- JSON1 extension for querying JSON columns
+- R-Tree module for spatial indexing
 
 .. _sqlite-wal-mode:
 
@@ -141,21 +133,19 @@ In production
 Pros and cons
 ------------------
 
-.. grid:: 2
+Pros
 
-   .. grid-item-card:: Pros
+- Zero operational overhead, no server to run or patch
+- Extremely fast for local, single-process access
+- The entire database is one portable file
+- Public domain, no licensing concerns at all
 
-      - Zero operational overhead, no server to run or patch
-      - Extremely fast for local, single-process access
-      - The entire database is one portable file
-      - Public domain, no licensing concerns at all
+Cons
 
-   .. grid-item-card:: Cons
-
-      - Not designed for many concurrent writers
-      - No built-in replication or clustering
-      - Network filesystems break its locking assumptions
-      - Limited support for concurrent connections from multiple servers
+- Not designed for many concurrent writers
+- No built-in replication or clustering
+- Network filesystems break its locking assumptions
+- Limited support for concurrent connections from multiple servers
 
 .. _sqlite-when-to-use:
 
