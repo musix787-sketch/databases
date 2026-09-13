@@ -74,19 +74,17 @@ Your first commands
 Notable functionality
 --------------------------
 
-.. grid:: 2
+Data structures
 
-   .. grid-item-card:: Data structures
+- Strings, hashes, lists, sets, sorted sets
+- HyperLogLog for approximate cardinality counting
+- Streams, an append-only log structure similar to Kafka topics
 
-      - Strings, hashes, lists, sets, sorted sets
-      - HyperLogLog for approximate cardinality counting
-      - Streams, an append-only log structure similar to Kafka topics
+Beyond caching
 
-   .. grid-item-card:: Beyond caching
-
-      - Pub/sub messaging between processes
-      - Distributed locks (with caveats, see below)
-      - Rate limiting using atomic counters with expiry
+- Pub/sub messaging between processes
+- Distributed locks (with caveats, see below)
+- Rate limiting using atomic counters with expiry
 
 .. _redis-persistence:
 
@@ -151,21 +149,19 @@ In production
 Pros and cons
 ------------------
 
-.. grid:: 2
+Pros
 
-   .. grid-item-card:: Pros
+- Extremely low latency, sub-millisecond for most operations
+- Rich data structures beyond plain key-value
+- Simple to run, simple to reason about
+- Great for caching, sessions, rate limiting, leaderboards
 
-      - Extremely low latency, sub-millisecond for most operations
-      - Rich data structures beyond plain key-value
-      - Simple to run, simple to reason about
-      - Great for caching, sessions, rate limiting, leaderboards
+Cons
 
-   .. grid-item-card:: Cons
-
-      - Everything lives in RAM, so dataset size is bounded by memory cost
-      - Persistence is opt-in and has real trade-offs either way
-      - Not built for complex querying or relationships
-      - Single-threaded execution means one slow command hurts everyone
+- Everything lives in RAM, so dataset size is bounded by memory cost
+- Persistence is opt-in and has real trade-offs either way
+- Not built for complex querying or relationships
+- Single-threaded execution means one slow command hurts everyone
 
 .. _redis-when-to-use:
 
