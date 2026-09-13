@@ -187,8 +187,3 @@ When it's not the right fit
 - Sub-millisecond cache-style lookups (consider Redis)
 - Massive horizontal write scaling across regions without a lot of
   operational investment (consider a distributed SQL system)
-
-.. seealso::
-   :doc:`connection-pooling` for handling Postgres's per-connection
-   process model at scale, and :doc:`caching-strategies` for offloading
-   hot reads.
