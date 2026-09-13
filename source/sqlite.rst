@@ -167,6 +167,3 @@ When it's not the right fit
 - High write concurrency from many independent processes
 - Anything requiring built-in replication for high availability
 
-.. seealso::
-   :doc:`backups-restore` still applies, a single file is easy to back up
-   but just as easy to forget to.
