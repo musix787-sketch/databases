@@ -82,6 +82,67 @@
   }, MIN_SKELETON_MS);
 })();
 
+(function () {
+  var init = function () {
+    var dropdowns = document.querySelectorAll("details.dbx-dropdown");
+    dropdowns.forEach(function (details) {
+      var summary = details.querySelector(
+        ":scope > summary.dbx-dropdown-summary"
+      );
+      var wrap = details.querySelector(
+        ":scope > .dbx-dropdown-content-wrap"
+      );
+      if (!summary || !wrap) return;
+
+      var pendingCleanup = null;
+
+      var settle = function () {
+        if (pendingCleanup) {
+          wrap.removeEventListener("transitionend", pendingCleanup);
+          pendingCleanup = null;
+        }
+      };
+
+      var open = function () {
+        settle();
+        details.open = true;
+        void wrap.offsetHeight;
+        requestAnimationFrame(function () {
+          details.classList.add("dbx-open");
+        });
+      };
+
+      var close = function () {
+        settle();
+        details.classList.remove("dbx-open");
+        pendingCleanup = function (e) {
+          if (e && e.target !== wrap) return;
+          details.open = false;
+          settle();
+        };
+        wrap.addEventListener("transitionend", pendingCleanup);
+      };
+
+      if (details.open) details.classList.add("dbx-open");
+
+      summary.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (details.classList.contains("dbx-open")) {
+          close();
+        } else {
+          open();
+        }
+      });
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+
 document.addEventListener("DOMContentLoaded", function () {
   var toc = document.querySelector(".globaltoc");
   if (toc) {
@@ -255,9 +316,9 @@ document.addEventListener("DOMContentLoaded", function () {
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
     'stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
 
-  document.querySelectorAll("div.highlight").forEach(function (block) {
+  document.querySelectorAll("div.highlight, pre.literal-block").forEach(function (block) {
     if (block.querySelector(".custom-copybtn")) return;
-    var pre = block.querySelector("pre");
+    var pre = block.matches("pre") ? block : block.querySelector("pre");
     if (!pre) return;
     var btn = document.createElement("button");
     btn.type = "button";
