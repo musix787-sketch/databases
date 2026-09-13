@@ -180,7 +180,3 @@ When it's not the right fit
 - Data that must survive a crash with zero loss and no persistence tuning
 - Datasets too large to reasonably fit in memory
 - Anything needing rich relational queries or joins
-
-.. seealso::
-   :doc:`caching-strategies` for patterns on using Redis as a cache
-   layer specifically.
