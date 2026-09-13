@@ -1,10 +1,6 @@
 Cassandra
 ============
 
-:bdg-warning:`Wide-column` :bdg-danger:`Eventually consistent` :bdg-success:`Massively scalable`
-
-Built at Facebook to do one thing at planet scale: absorb writes without falling over.
-
 .. _cassandra-what-it-is:
 
 What it is
