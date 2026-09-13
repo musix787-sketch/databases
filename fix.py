@@ -19,16 +19,17 @@ for fname in glob.glob("*.html"):
 
     prefix, body, suffix = m.groups()
 
-    sections = re.split(r'<p class="caption"[^>]*>.*?</p>\s*', body)
-    sections = [s for s in sections if s.strip()]
-    merged_items = []
-    for sec in sections:
+    parts = re.split(r'(<p[^>]*class="caption"[^>]*>.*?</p>)\s*', body)
+    # parts alternates: [pre-caption junk, caption_html, section_html, caption_html, section_html, ...]
+    new_chunks = [parts[0]] if parts[0].strip() else []
+    for caption_html, sec in zip(parts[1::2], parts[2::2]):
         sec = sec.strip()
         inner = re.sub(r'^<ul>\s*', '', sec)
         inner = re.sub(r'\s*</ul>\s*$', '', inner)
-        merged_items.append(inner)
+        inner = re.sub(r'</ul>\s*<ul(?:\s+class="[^"]*")?>', '', inner)
+        new_chunks.append(caption_html + '\n<ul>\n' + inner + '\n</ul>\n')
 
-    new_body = '<p class="caption" role="heading" aria-level="3"><span class="caption-text">Start here</span></p>\n<ul>\n' + '\n'.join(merged_items) + '\n</ul>\n'
+    new_body = '\n'.join(new_chunks)
 
     content = content[:m.start()] + prefix + new_body + suffix + content[m.end():]
 
