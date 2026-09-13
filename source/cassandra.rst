@@ -138,22 +138,25 @@ long risks permanently inconsistent data.
 Pros and cons
 ------------------
 
-.. grid:: 2
+Pros
 
-   .. grid-item-card:: Pros
+- Linear horizontal write scalability across many nodes
 
-      - Linear horizontal write scalability across many nodes
-      - No single point of failure, survives node and even data center loss
-      - Tunable consistency per query
-      - Proven at genuinely massive scale (originated at Facebook, used at Netflix, Apple)
+- No single point of failure, survives node and even data center loss
 
-   .. grid-item-card:: Cons
+- Tunable consistency per query
 
-      - No joins, no ad hoc queries outside your modeled access patterns
-      - Query-first modeling is a real learning curve
-      - Operational complexity (repair, compaction, tombstones) is
-        significant
-      - Overkill for anything that fits on one strong Postgres instance
+- Proven at genuinely massive scale (originated at Facebook, used at Netflix, Apple)
+
+Cons
+
+- No joins, no ad hoc queries outside your modeled access patterns
+
+- Query-first modeling is a real learning curve
+
+- Operational complexity (repair, compaction, tombstones) is significant
+
+- Overkill for anything that fits on one strong Postgres instance
 
 .. _cassandra-when-to-use:
 
