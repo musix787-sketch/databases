@@ -23,13 +23,14 @@ of the data. Every piece of data is replicated to multiple nodes
 some nodes being down entirely, controlled by a tunable consistency level
 per query.
 
-.. dropdown:: The gossip protocol
+The gossip protocol
+--------------------
 
-   Nodes don't rely on a central coordinator to know about each other,
-   they gossip: each node periodically exchanges state information with a
-   few random peers, and cluster-wide knowledge spreads within a few
-   rounds. This is exactly what makes the masterless design survive nodes
-   joining, leaving, or failing without coordination overhead.
+Nodes don't rely on a central coordinator to know about each other,
+they gossip: each node periodically exchanges state information with a
+few random peers, and cluster-wide knowledge spreads within a few
+rounds. This is exactly what makes the masterless design survive nodes
+joining, leaving, or failing without coordination overhead.
 
 .. _cassandra-setup:
 
