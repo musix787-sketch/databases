@@ -152,21 +152,25 @@ others sit idle.
 Pros and cons
 ------------------
 
-.. grid:: 2
+Pros
 
-   .. grid-item-card:: Pros
+- Natural fit for nested, document-shaped data
 
-      - Natural fit for nested, document-shaped data
-      - Schema flexibility speeds up early development
-      - Horizontal scaling (sharding) is a first-class, built-in feature
-      - Aggregation pipeline is genuinely powerful
+- Schema flexibility speeds up early development
 
-   .. grid-item-card:: Cons
+- Horizontal scaling (sharding) is a first-class, built-in feature
 
-      - No joins in the relational sense; denormalization is the norm
-      - Easy to accidentally pick a weak consistency level
-      - Schema flexibility can become schema chaos without discipline
-      - Multi-document transactions exist but are heavier than in an RDBMS
+- Aggregation pipeline is genuinely powerful
+
+Cons
+
+- No joins in the relational sense; denormalization is the norm
+
+- Easy to accidentally pick a weak consistency level
+
+- Schema flexibility can become schema chaos without discipline
+
+- Multi-document transactions exist but are heavier than in an RDBMS
 
 .. _mongo-when-to-use:
 
@@ -189,7 +193,3 @@ When it's not the right fit
   per-query tuning
 - Small, stable schemas where a relational database's guarantees are
   simply better default behavior
-
-.. seealso::
-   :doc:`consistency-tradeoffs-at-scale` for more on what tunable
-   consistency actually costs you.
