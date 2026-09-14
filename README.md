@@ -26,5 +26,5 @@ know about the `sphinx-design` directives used throughout `source/*.rst`
 `mysql.rst`, `mongodb.rst`, `redis.rst`, `sqlite.rst`, `cassandra.rst`, and
 most of the "Operating in production"/"Security and access"/"Scaling in
 practice" pages) will show "Unknown directive type" error blocks in
-GitHub's file preview. That's expected and cosmetic — build the site
+GitHub's file preview. That's expected and cosmetic, build the site
 (above) or use the Cloudflare Pages deployment to read them properly.
